@@ -28,8 +28,8 @@
             </select>
         </div>
 
-        <button class="btn btn-success">Simpan</button>
-        <a href="{{ route('ruangan.index') }}" class="btn btn-secondary">Kembali</a>
+        <button class="btn btn-success">Submit</button>
+        <a href="{{ route('ruangan.index') }}" class="btn btn-secondary">Batal</a>
 
     </form>
 
