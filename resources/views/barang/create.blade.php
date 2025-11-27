@@ -23,16 +23,32 @@
                        value="{{ old('kode_inventaris') }}" class="form-control">
             </div>
 
+            {{-- DROPDOWN KATEGORI (TAMPILKAN ID) --}}
             <div class="mb-2">
                 <label for="inputKategoriID" class="form-label">Kategori ID</label>
-                <input type="text" name="kategori_id" id="inputKategoriID"
-                       value="{{ old('kategori_id') }}" class="form-control">
+                <select name="kategori_id" id="inputKategoriID" class="form-control">
+                    <option value="">-- Pilih Kategori --</option>
+                    @foreach ($kategoris as $kategori)
+                        <option value="{{ $kategori->id }}"
+                            {{ old('kategori_id') == $kategori->id ? 'selected' : '' }}>
+                            {{ $kategori->id }}  {{-- TAMPILKAN ID --}}
+                        </option>
+                    @endforeach
+                </select>
             </div>
 
+            {{-- DROPDOWN RUANGAN (TAMPILKAN ID) --}}
             <div class="mb-2">
                 <label for="inputRuanganID" class="form-label">Ruangan ID</label>
-                <input type="text" name="ruangan_id" id="inputRuanganID"
-                       value="{{ old('ruangan_id') }}" class="form-control">
+                <select name="ruangan_id" id="inputRuanganID" class="form-control">
+                    <option value="">-- Pilih Ruangan --</option>
+                    @foreach ($ruangans as $ruangan)
+                        <option value="{{ $ruangan->id }}"
+                            {{ old('ruangan_id') == $ruangan->id ? 'selected' : '' }}>
+                            {{ $ruangan->id }} {{-- TAMPILKAN ID --}}
+                        </option>
+                    @endforeach
+                </select>
             </div>
 
             <div class="mb-2">

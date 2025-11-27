@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kategori;
+use App\Models\Ruangan;
 use App\Models\Barang;
 use Illuminate\Http\Request;
 
@@ -12,10 +14,15 @@ class BarangController extends Controller
         return view('barang.index', ['items' => $barang]);
     }
 
-    public function create()
-    {
-        return view('barang.create');
-    }
+
+public function create()
+{
+    $kategoris = Kategori::all();
+    $ruangans = Ruangan::all();
+
+    return view('barang.create', compact('kategoris', 'ruangans'));
+}
+
 
     public function store(Request $request) {
         $validated = $request->validate([

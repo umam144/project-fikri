@@ -27,9 +27,15 @@
 
             <div class="mb-2">
                 <label for="inputTanahID" class="form-label">Tanah ID</label>
-                <input type="text" name="tanah_id" id="inputTanahID"
-                       value="{{ old('tanah_id') }}" 
-                       class="form-control">
+                <select name="tanah_id" id="inputTanahID" class="form-control">
+                    <option value="">-- Pilih Tanah --</option>
+                    @foreach ($tanahs as $tanah)
+                        <option value="{{ $tanah->id }}"
+                            {{ old('tanah_id') == $tanah->id ? 'selected' : '' }}>
+                            {{ $tanah->id }} - {{ $tanah->nama_tanah }}
+                        </option>
+                    @endforeach
+                </select>
             </div>
 
             <div class="mb-2">

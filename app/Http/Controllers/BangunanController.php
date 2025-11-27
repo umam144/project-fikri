@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tanah;       // <-- WAJIB ADA
 use App\Models\Bangunan;
 use Illuminate\Http\Request;
 
@@ -13,9 +14,12 @@ class BangunanController extends Controller
     }
 
     public function create()
-    {
-        return view('bangunan.create');
-    }
+{
+    $tanahs = Tanah::all(); // ambil semua data tanah
+
+    return view('bangunan.create', compact('tanahs'));
+}
+
 
     public function store(Request $request) {
         $validated = $request->validate([
