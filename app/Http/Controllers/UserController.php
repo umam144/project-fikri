@@ -75,4 +75,18 @@ class UserController extends Controller
         User::destroy($id);
         return redirect()->route('users.index')->with('success', 'User berhasil dihapus');
     }
+    public function up()
+{
+    Schema::table('users', function (Blueprint $table) {
+        $table->string('role')->default('user'); // admin / user
+    });
+}
+
+public function down()
+{
+    Schema::table('users', function (Blueprint $table) {
+        $table->dropColumn('role');
+    });
+}
+
 }

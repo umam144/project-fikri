@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Tambah User')
+@section('title', 'Edit User')
 
 @push('styles')
 <style>
@@ -48,41 +48,31 @@
 @section('content')
 <div class="card m-4">
     <div class="card-header">
-        <h2 class="card-title">Tambah User</h2>
+        <h2 class="card-title">Edit User</h2>
     </div>
 
     <div class="card-body p-4">
 
-        <form action="{{ route('users.store') }}" method="post">
+        <form action="{{ route('users.update', $user->id) }}" method="post">
             @csrf
+            @method('PUT')
 
             <div class="mb-3">
                 <label class="form-label">Nama</label>
-                <input type="text" name="name" class="form-control">
+                <input type="text" name="name" value="{{ $user->name }}" class="form-control">
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Email</label>
-                <input type="email" name="email" class="form-control">
+                <input type="email" name="email" value="{{ $user->email }}" class="form-control">
             </div>
 
             <div class="mb-3">
-                <label class="form-label">Password</label>
+                <label class="form-label">Password (isi jika ingin mengganti)</label>
                 <input type="password" name="password" class="form-control">
             </div>
 
-            <!-- ROLE FIELD -->
-            <div class="mb-3">
-                <label class="form-label">Role</label>
-                <select name="role" class="form-control">
-                    <option value="">-- Pilih Role --</option>
-                    <option value="admin">Admin</option>
-                    <option value="petugas">Petugas</option>
-                    <option value="user">User</option>
-                </select>
-            </div>
-
-            <button class="btn btn-success">Submit</button>
+            <button class="btn btn-success">Update</button>
             <button type="reset" class="btn btn-outline-secondary">Batal</button>
 
         </form>

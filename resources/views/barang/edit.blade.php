@@ -2,6 +2,89 @@
 
 @section('title', 'Edit Data Barang')
 
+@push('styles')
+<style>
+    /* ===== CARD ===== */
+    .card {
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        border: none !important;
+    }
+
+    .card-header {
+        background: linear-gradient(135deg, #4f46e5, #6366f1);
+        color: white;
+        padding: 18px;
+        border-top-left-radius: 12px !important;
+        border-top-right-radius: 12px !important;
+        text-align: center;
+    }
+
+    .card-title {
+        font-size: 22px;
+        font-weight: 600;
+    }
+
+    /* ===== CARD BODY ===== */
+    .card-body {
+        padding: 24px;
+    }
+
+    /* ===== LABEL ===== */
+    .form-label {
+        font-weight: 600;
+        color: #4f46e5;
+        margin-bottom: 6px;
+    }
+
+    /* ===== INPUT ===== */
+    .form-control {
+        border-radius: 8px;
+        border: 1px solid #c7d2fe;
+        padding: 10px 12px;
+        font-size: 15px;
+    }
+
+    .form-control:focus {
+        border-color: #4f46e5;
+        box-shadow: 0 0 6px rgba(79, 70, 229, 0.3);
+    }
+
+    /* ===== BUTTON SUBMIT ===== */
+    .btn-success {
+        background-color: #4f46e5 !important;
+        border-color: #4f46e5 !important;
+        border-radius: 8px;
+        padding: 8px 18px;
+        font-weight: 500;
+    }
+
+    .btn-success:hover {
+        background-color: #3730a3 !important;
+        border-color: #3730a3 !important;
+    }
+
+    /* ===== BUTTON RESET ===== */
+    .btn-outline-secondary {
+        border-radius: 8px;
+        padding: 8px 18px;
+        color: #555;
+        font-weight: 500;
+        border-color: #c7d2fe;
+    }
+
+    .btn-outline-secondary:hover {
+        background-color: #eef2ff;
+    }
+
+    /* ===== SPASI ===== */
+    .mb-2 {
+        margin-bottom: 16px !important;
+    }
+</style>
+@endpush
+
 @section('content')
 <div class="card m-4">
     <div class="card-header">
@@ -11,7 +94,7 @@
         <form action="{{ route('barang.update', $barang->id) }}" method="post">
             @csrf
             @method('PUT')
-            
+
             <div class="mb-2">
                 <label for="inputNamaBarang" class="form-label">Nama Barang</label>
                 <input type="text" name="nama_barang" id="inputNamaBarang"
@@ -61,8 +144,8 @@
                        class="form-control">
             </div>
 
-            <div class="mb-2">
-                <button type="submit" class="btn btn-success me-2">Submit</button>
+            <div class="mt-3">
+                <button type="submit" class="btn btn-success me-2">Update</button>
                 <button type="reset" class="btn btn-outline-secondary me-2">Batal</button>
             </div>
 
